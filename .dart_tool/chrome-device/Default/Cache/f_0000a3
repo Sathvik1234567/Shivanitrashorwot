@@ -1,0 +1,378 @@
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/characters/src/extensions.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/animated_text_kit/src/animated_text.dart', 'packages/flutter/src/animation/animation_controller.dart'], (function load__packages__animated_text_kit__src__typewriter_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__characters__src__extensions$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__painting__strut_style$46dart, packages__animated_text_kit__src__animated_text$46dart, packages__flutter__src__animation__animation_controller$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const extensions = packages__characters__src__extensions$46dart.src__extensions;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
+  const inline_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__inline_span;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const animated_text = packages__animated_text_kit__src__animated_text$46dart.src__animated_text;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  var typewriter = Object.create(dart.library);
+  var $length = dartx.length;
+  var $clamp = dartx.clamp;
+  var $round = dartx.round;
+  var $modulo = dartx['%'];
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    JSArrayOfInlineSpan: () => (T.JSArrayOfInlineSpan = dart.constFn(_interceptors.JSArray$(inline_span.InlineSpan)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    StringToTypewriterAnimatedText: () => (T.StringToTypewriterAnimatedText = dart.constFn(dart.fnType(typewriter.TypewriterAnimatedText, [core.String])))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.TextAlign.prototype,
+        [_name]: "TextAlign.start",
+        index: 4
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 30000
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: curves._Linear.prototype
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: null,
+        [TextStyle_fontSize]: null,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[4] || CT.C4,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 9,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 9,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 48,
+        [_Location_line]: 55,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/animated_text_kit-4.2.1/lib/src/typewriter.dart"
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 7,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 7,
+        [_Location_line]: 102,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 90,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/animated_text_kit-4.2.1/lib/src/typewriter.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000000
+      });
+    }
+  }, false);
+  var C = Array(14).fill(void 0);
+  var I = [
+    "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/animated_text_kit-4.2.1/lib/src/typewriter.dart",
+    "package:animated_text_kit/src/typewriter.dart"
+  ];
+  var speed$ = dart.privateName(typewriter, "TypewriterAnimatedText.speed");
+  var curve$ = dart.privateName(typewriter, "TypewriterAnimatedText.curve");
+  var cursor$ = dart.privateName(typewriter, "TypewriterAnimatedText.cursor");
+  var _name = dart.privateName(ui, "_name");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var __TypewriterAnimatedText__typewriterText = dart.privateName(typewriter, "_#TypewriterAnimatedText#_typewriterText");
+  var __TypewriterAnimatedText__typewriterText_isSet = dart.privateName(typewriter, "_#TypewriterAnimatedText#_typewriterText#isSet");
+  var _typewriterText = dart.privateName(typewriter, "_typewriterText");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  typewriter.TypewriterAnimatedText = class TypewriterAnimatedText extends animated_text.AnimatedText {
+    get speed() {
+      return this[speed$];
+    }
+    set speed(value) {
+      super.speed = value;
+    }
+    get curve() {
+      return this[curve$];
+    }
+    set curve(value) {
+      super.curve = value;
+    }
+    get cursor() {
+      return this[cursor$];
+    }
+    set cursor(value) {
+      super.cursor = value;
+    }
+    get [_typewriterText]() {
+      let t0;
+      return dart.test(this[__TypewriterAnimatedText__typewriterText_isSet]) ? (t0 = this[__TypewriterAnimatedText__typewriterText], t0) : dart.throw(new _internal.LateError.fieldNI("_typewriterText"));
+    }
+    set [_typewriterText](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 40, 26, "null");
+      this[__TypewriterAnimatedText__typewriterText_isSet] = true;
+      this[__TypewriterAnimatedText__typewriterText] = t0;
+    }
+    get remaining() {
+      return this.speed['*'](dart.notNull(this.textCharacters[$length]) + 8 - dart.notNull(this[_typewriterText].value));
+    }
+    initAnimation(controller) {
+      if (controller == null) dart.nullFailed(I[0], 48, 42, "controller");
+      this[_typewriterText] = new tween.CurveTween.new({curve: this.curve}).animate(controller);
+    }
+    completeText(context) {
+      if (context == null) dart.nullFailed(I[0], 55, 36, "context");
+      return new basic.RichText.new({text: new text_span.TextSpan.new({children: T.JSArrayOfInlineSpan().of([new text_span.TextSpan.new({text: this.text}), new text_span.TextSpan.new({text: this.cursor, style: C[3] || CT.C3})]), style: text.DefaultTextStyle.of(context).style.merge(this.textStyle)}), textAlign: this.textAlign, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+    animatedBuilder(context, child) {
+      if (context == null) dart.nullFailed(I[0], 71, 39, "context");
+      let textLen = this.textCharacters[$length];
+      let typewriterValue = (this[_typewriterText].value[$clamp](0, 1) * (dart.notNull(this.textCharacters[$length]) + 8))[$round]();
+      let showCursor = true;
+      let visibleString = this.text;
+      if (typewriterValue === 0) {
+        visibleString = "";
+        showCursor = false;
+      } else if (typewriterValue > dart.notNull(textLen)) {
+        showCursor = (typewriterValue - dart.notNull(textLen))[$modulo](2) === 0;
+      } else {
+        visibleString = dart.toString(this.textCharacters.take(typewriterValue));
+      }
+      return new basic.RichText.new({text: new text_span.TextSpan.new({children: T.JSArrayOfInlineSpan().of([new text_span.TextSpan.new({text: visibleString}), new text_span.TextSpan.new({text: this.cursor, style: showCursor ? null : C[3] || CT.C3})]), style: text.DefaultTextStyle.of(context).style.merge(this.textStyle)}), textAlign: this.textAlign, $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+    }
+  };
+  (typewriter.TypewriterAnimatedText.new = function(text, opts) {
+    if (text == null) dart.nullFailed(I[0], 27, 12, "text");
+    let textAlign = opts && 'textAlign' in opts ? opts.textAlign : C[0] || CT.C0;
+    if (textAlign == null) dart.nullFailed(I[0], 28, 15, "textAlign");
+    let textStyle = opts && 'textStyle' in opts ? opts.textStyle : null;
+    let speed = opts && 'speed' in opts ? opts.speed : C[1] || CT.C1;
+    if (speed == null) dart.nullFailed(I[0], 30, 10, "speed");
+    let curve = opts && 'curve' in opts ? opts.curve : C[2] || CT.C2;
+    if (curve == null) dart.nullFailed(I[0], 31, 10, "curve");
+    let cursor = opts && 'cursor' in opts ? opts.cursor : "_";
+    if (cursor == null) dart.nullFailed(I[0], 32, 10, "cursor");
+    this[__TypewriterAnimatedText__typewriterText] = null;
+    this[__TypewriterAnimatedText__typewriterText_isSet] = false;
+    this[speed$] = speed;
+    this[curve$] = curve;
+    this[cursor$] = cursor;
+    typewriter.TypewriterAnimatedText.__proto__.new.call(this, {text: text, textAlign: textAlign, textStyle: textStyle, duration: speed['*'](dart.notNull(extensions['StringCharacters|get#characters'](text)[$length]) + 8)});
+    ;
+  }).prototype = typewriter.TypewriterAnimatedText.prototype;
+  dart.addTypeTests(typewriter.TypewriterAnimatedText);
+  dart.addTypeCaches(typewriter.TypewriterAnimatedText);
+  dart.setMethodSignature(typewriter.TypewriterAnimatedText, () => ({
+    __proto__: dart.getMethods(typewriter.TypewriterAnimatedText.__proto__),
+    initAnimation: dart.fnType(dart.void, [animation_controller.AnimationController]),
+    animatedBuilder: dart.fnType(framework.Widget, [framework.BuildContext, dart.nullable(framework.Widget)])
+  }));
+  dart.setGetterSignature(typewriter.TypewriterAnimatedText, () => ({
+    __proto__: dart.getGetters(typewriter.TypewriterAnimatedText.__proto__),
+    [_typewriterText]: animation.Animation$(core.double),
+    remaining: core.Duration
+  }));
+  dart.setSetterSignature(typewriter.TypewriterAnimatedText, () => ({
+    __proto__: dart.getSetters(typewriter.TypewriterAnimatedText.__proto__),
+    [_typewriterText]: animation.Animation$(core.double)
+  }));
+  dart.setLibraryUri(typewriter.TypewriterAnimatedText, I[1]);
+  dart.setFieldSignature(typewriter.TypewriterAnimatedText, () => ({
+    __proto__: dart.getFields(typewriter.TypewriterAnimatedText.__proto__),
+    speed: dart.finalFieldType(core.Duration),
+    curve: dart.finalFieldType(curves.Curve),
+    cursor: dart.finalFieldType(core.String),
+    [__TypewriterAnimatedText__typewriterText]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [__TypewriterAnimatedText__typewriterText_isSet]: dart.fieldType(core.bool)
+  }));
+  dart.defineLazy(typewriter.TypewriterAnimatedText, {
+    /*typewriter.TypewriterAnimatedText.extraLengthForBlinks*/get extraLengthForBlinks() {
+      return 8;
+    }
+  }, false);
+  typewriter.TypewriterAnimatedTextKit = class TypewriterAnimatedTextKit extends animated_text.AnimatedTextKit {
+    static _animatedTexts(text, textAlign, textStyle, speed, curve) {
+      if (text == null) dart.nullFailed(I[0], 147, 18, "text");
+      if (textAlign == null) dart.nullFailed(I[0], 148, 15, "textAlign");
+      if (textStyle == null) dart.nullFailed(I[0], 149, 15, "textStyle");
+      if (speed == null) dart.nullFailed(I[0], 150, 14, "speed");
+      if (curve == null) dart.nullFailed(I[0], 151, 11, "curve");
+      return text[$map](typewriter.TypewriterAnimatedText, dart.fn(_ => {
+        if (_ == null) dart.nullFailed(I[0], 154, 17, "_");
+        return new typewriter.TypewriterAnimatedText.new(_, {textAlign: textAlign, textStyle: textStyle, speed: speed, curve: curve});
+      }, T.StringToTypewriterAnimatedText()))[$toList]();
+    }
+  };
+  (typewriter.TypewriterAnimatedTextKit.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let text = opts && 'text' in opts ? opts.text : null;
+    if (text == null) dart.nullFailed(I[0], 115, 27, "text");
+    let textAlign = opts && 'textAlign' in opts ? opts.textAlign : C[0] || CT.C0;
+    if (textAlign == null) dart.nullFailed(I[0], 116, 15, "textAlign");
+    let textStyle = opts && 'textStyle' in opts ? opts.textStyle : null;
+    if (textStyle == null) dart.nullFailed(I[0], 117, 24, "textStyle");
+    let speed = opts && 'speed' in opts ? opts.speed : C[1] || CT.C1;
+    if (speed == null) dart.nullFailed(I[0], 118, 14, "speed");
+    let pause = opts && 'pause' in opts ? opts.pause : C[13] || CT.C13;
+    if (pause == null) dart.nullFailed(I[0], 119, 14, "pause");
+    let displayFullTextOnTap = opts && 'displayFullTextOnTap' in opts ? opts.displayFullTextOnTap : false;
+    if (displayFullTextOnTap == null) dart.nullFailed(I[0], 120, 10, "displayFullTextOnTap");
+    let stopPauseOnTap = opts && 'stopPauseOnTap' in opts ? opts.stopPauseOnTap : false;
+    if (stopPauseOnTap == null) dart.nullFailed(I[0], 121, 10, "stopPauseOnTap");
+    let onTap = opts && 'onTap' in opts ? opts.onTap : null;
+    let onNext = opts && 'onNext' in opts ? opts.onNext : null;
+    let onNextBeforePause = opts && 'onNextBeforePause' in opts ? opts.onNextBeforePause : null;
+    let onFinished = opts && 'onFinished' in opts ? opts.onFinished : null;
+    let isRepeatingAnimation = opts && 'isRepeatingAnimation' in opts ? opts.isRepeatingAnimation : true;
+    if (isRepeatingAnimation == null) dart.nullFailed(I[0], 126, 10, "isRepeatingAnimation");
+    let repeatForever = opts && 'repeatForever' in opts ? opts.repeatForever : true;
+    if (repeatForever == null) dart.nullFailed(I[0], 127, 10, "repeatForever");
+    let totalRepeatCount = opts && 'totalRepeatCount' in opts ? opts.totalRepeatCount : 3;
+    if (totalRepeatCount == null) dart.nullFailed(I[0], 128, 9, "totalRepeatCount");
+    let curve = opts && 'curve' in opts ? opts.curve : C[2] || CT.C2;
+    if (curve == null) dart.nullFailed(I[0], 129, 11, "curve");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    typewriter.TypewriterAnimatedTextKit.__proto__.new.call(this, {key: key, animatedTexts: typewriter.TypewriterAnimatedTextKit._animatedTexts(text, textAlign, textStyle, speed, curve), pause: pause, displayFullTextOnTap: displayFullTextOnTap, stopPauseOnTap: stopPauseOnTap, onTap: onTap, onNext: onNext, onNextBeforePause: onNextBeforePause, onFinished: onFinished, isRepeatingAnimation: isRepeatingAnimation, repeatForever: repeatForever, totalRepeatCount: totalRepeatCount, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = typewriter.TypewriterAnimatedTextKit.prototype;
+  dart.addTypeTests(typewriter.TypewriterAnimatedTextKit);
+  dart.addTypeCaches(typewriter.TypewriterAnimatedTextKit);
+  dart.setLibraryUri(typewriter.TypewriterAnimatedTextKit, I[1]);
+  dart.trackLibraries("packages/animated_text_kit/src/typewriter.dart", {
+    "package:animated_text_kit/src/typewriter.dart": typewriter
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["typewriter.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAeiB;;;;;;IAKH;;;;;;IAGC;;;;;;;;AAgBU;IAAe;;;AAAf;;IAAe;;AAIlC,YAAA,AAAM,iBACiB,AAAuB,aAA7C,AAAe,iDAAgC,AAAgB;IAAM;;UAGnC;AAGhB,MAFrB,wBAAkB,AAEhB,iCADO,qBACC,UAAU;IACtB;;UAGiC;AAAY,2CACjC,sCACM,4BACR,kCAAe,aACf,kCACQ,8CAIc,AAAY,AAAM,yBAAf,OAAO,cAAc,8BAEvC;IACZ;oBAI+B,SAAiB;UAAjB;AAG5B,oBAAU,AAAe;AACzB,4BAED,CAFoB,AAAgB,AAAM,AAAY,oCAAN,GAAG,MACzB,aAAtB,AAAe;AAGpB,uBAAa;AACb,0BAAgB;AACpB,UAAI,AAAgB,eAAD,KAAI;AACH,QAAlB,gBAAgB;AACE,QAAlB,aAAa;YACR,KAAI,AAAgB,eAAD,gBAAG,OAAO;AACe,QAAjD,aAAyC,AAAI,CAA/B,AAAgB,eAAD,gBAAG,OAAO,YAAI,OAAK;;AAEe,QAA/D,gBAAqD,cAArC,AAAe,yBAAK,eAAe;;AAGrD,YAAO,+BACC,sCACM,4BACR,kCAAe,aAAa,IAC5B,kCACQ,oBAEF,UAAU,GAAG,iCAGG,AAAY,AAAM,yBAAf,OAAO,cAAc,8BAEvC;IAEf;;;QA7ES;QACG;;QACC;QACN;;QACA;;QACA;;qDAQgB;;IAVhB;IACA;IACA;AACF,sEACS,IAAI,aACC,SAAS,aACT,SAAS,YACV,AAAM,KAAD,MAA2B,aAAlB,AAAW,8CAAhB,IAAI;;EACxB;;;;;;;;;;;;;;;;;;;;;;;;;;;MA3BM,sDAAoB;;;;;0BAwIlB,MACH,WACA,WACD,OACH;UAJO;UACH;UACA;UACD;UACH;AAEJ,YAAA,AACK,AAOA,KARD,0CACK;YAAC;AAAM,yDACN,CAAC,cACU,SAAS,aACT,SAAS,SACb,KAAK,SACL,KAAK;;IAET;;;QA/CV;QACiB;;QACZ;;QACS;;QACV;;QACA;;QACJ;;QACA;;QACS;QACY;QACA;QACZ;QACT;;QACA;;QACD;;QACE;;;AACH,wEACQ,GAAG,iBAEJ,oDAAe,IAAI,EAAE,SAAS,EAAE,SAAS,EAAE,KAAK,EAAE,KAAK,UACpD,KAAK,wBACU,oBAAoB,kBAC1B,cAAc,SACvB,KAAK,UACJ,MAAM,qBACK,iBAAiB,cACxB,UAAU,wBACA,oBAAoB,iBAC3B,aAAa,oBACV,gBAAgB;;EACnC","file":"../../../../../../../packages/animated_text_kit/src/typewriter.dart.lib.js"}');
+  // Exports:
+  return {
+    src__typewriter: typewriter
+  };
+}));
+
+//# sourceMappingURL=typewriter.dart.lib.js.map

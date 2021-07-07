@@ -1,0 +1,349 @@
+define(['dart_sdk', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__firebase_core__firebase_core_dart(dart_sdk, packages__flutter__src__services__system_channels$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const _js_helper = dart_sdk._js_helper;
+  const io = dart_sdk.io;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const platform_channel = packages__flutter__src__services__system_channels$46dart.src__services__platform_channel;
+  const message_codecs = packages__flutter__src__services__system_channels$46dart.src__services__message_codecs;
+  var firebase_core = Object.create(dart.library);
+  var $_get = dartx._get;
+  var $map = dartx.map;
+  var $toList = dartx.toList;
+  var $hashCode = dartx.hashCode;
+  var $_equals = dartx._equals;
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    MapL: () => (T.MapL = dart.constFn(dart.legacy(core.Map)))(),
+    FirebaseOptionsL: () => (T.FirebaseOptionsL = dart.constFn(dart.legacy(firebase_core.FirebaseOptions)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    FirebaseAppL: () => (T.FirebaseAppL = dart.constFn(dart.legacy(firebase_core.FirebaseApp)))(),
+    IdentityMapOfStringL$dynamic: () => (T.IdentityMapOfStringL$dynamic = dart.constFn(_js_helper.IdentityMap$(T.StringL(), dart.dynamic)))(),
+    ListL: () => (T.ListL = dart.constFn(dart.legacy(core.List)))(),
+    dynamicToFirebaseAppL: () => (T.dynamicToFirebaseAppL = dart.constFn(dart.fnType(T.FirebaseAppL(), [dart.dynamic])))(),
+    ListOfFirebaseAppL: () => (T.ListOfFirebaseAppL = dart.constFn(core.List$(T.FirebaseAppL())))(),
+    ListLOfFirebaseAppL: () => (T.ListLOfFirebaseAppL = dart.constFn(dart.legacy(T.ListOfFirebaseAppL())))(),
+    IdentityMapOfStringL$StringL: () => (T.IdentityMapOfStringL$StringL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.StringL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: message_codecs.StandardMessageCodec.prototype
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: message_codecs.StandardMethodCodec.prototype,
+        [StandardMethodCodec_messageCodec]: C[2] || CT.C2
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: platform_channel.MethodChannel.prototype,
+        [MethodChannel__binaryMessenger]: null,
+        [MethodChannel_codec]: C[1] || CT.C1,
+        [MethodChannel_name]: "plugins.flutter.io/firebase_core"
+      });
+    }
+  }, false);
+  var C = Array(3).fill(void 0);
+  var I = [
+    "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.3.4/lib/src/firebase_app.dart",
+    "package:firebase_core/firebase_core.dart",
+    "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.3.4/lib/src/firebase_options.dart"
+  ];
+  var name$ = dart.privateName(firebase_core, "FirebaseApp.name");
+  var MethodChannel__binaryMessenger = dart.privateName(platform_channel, "MethodChannel._binaryMessenger");
+  var StandardMethodCodec_messageCodec = dart.privateName(message_codecs, "StandardMethodCodec.messageCodec");
+  var MethodChannel_codec = dart.privateName(platform_channel, "MethodChannel.codec");
+  var MethodChannel_name = dart.privateName(platform_channel, "MethodChannel.name");
+  firebase_core.FirebaseApp = class FirebaseApp extends core.Object {
+    get name() {
+      return this[name$];
+    }
+    set name(value) {
+      super.name = value;
+    }
+    get options() {
+      return async.async(T.FirebaseOptionsL(), (function* options() {
+        let app = (yield firebase_core.FirebaseApp.channel.invokeMethod(T.MapL(), "FirebaseApp#appNamed", this.name));
+        if (!(app != null)) dart.assertFailed(null, I[0], 34, 12, "app != null");
+        return new firebase_core.FirebaseOptions.from(T.MapL().as(app[$_get]("options")));
+      }).bind(this));
+    }
+    static appNamed(name) {
+      return async.async(T.FirebaseAppL(), function* appNamed() {
+        let app = (yield firebase_core.FirebaseApp.channel.invokeMethod(T.MapL(), "FirebaseApp#appNamed", name));
+        return app == null ? null : new firebase_core.FirebaseApp.new({name: T.StringL().as(app[$_get]("name"))});
+      });
+    }
+    static configure(opts) {
+      let name = opts && 'name' in opts ? opts.name : null;
+      let options = opts && 'options' in opts ? opts.options : null;
+      return async.async(T.FirebaseAppL(), function* configure() {
+        if (!(name != null)) dart.assertFailed(null, I[0], 65, 12, "name != null");
+        if (!(name != firebase_core.FirebaseApp.defaultAppName)) dart.assertFailed(null, I[0], 66, 12, "name != defaultAppName");
+        if (!(options != null)) dart.assertFailed(null, I[0], 67, 12, "options != null");
+        if (!(options.googleAppID != null)) dart.assertFailed(null, I[0], 68, 12, "options.googleAppID != null");
+        let existingApp = (yield firebase_core.FirebaseApp.appNamed(name));
+        if (existingApp != null) {
+          return existingApp;
+        }
+        yield firebase_core.FirebaseApp.channel.invokeMethod(dart.dynamic, "FirebaseApp#configure", new (T.IdentityMapOfStringL$dynamic()).from(["name", name, "options", options.asMap]));
+        return new firebase_core.FirebaseApp.new({name: name});
+      });
+    }
+    static allApps() {
+      return async.async(T.ListLOfFirebaseAppL(), function* allApps() {
+        let t0, t0$;
+        let result = (yield firebase_core.FirebaseApp.channel.invokeMethod(T.ListL(), "FirebaseApp#allApps"));
+        t0$ = (t0 = result, t0 == null ? null : t0[$map](T.FirebaseAppL(), dart.fn(app => new firebase_core.FirebaseApp.new({name: T.StringL().as(dart.dsend(app, '_get', ["name"]))}), T.dynamicToFirebaseAppL())));
+        return t0$ == null ? null : t0$[$toList]();
+      });
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) return true;
+      if (!T.FirebaseAppL().is(other)) return false;
+      return dart.equals(dart.dload(other, 'name'), this.name);
+    }
+    get hashCode() {
+      return dart.hashCode(this.name);
+    }
+    toString() {
+      return dart.str(dart.wrapType(firebase_core.FirebaseApp)) + "(" + dart.str(this.name) + ")";
+    }
+  };
+  (firebase_core.FirebaseApp.new = function(opts) {
+    let name = opts && 'name' in opts ? opts.name : null;
+    this[name$] = name;
+    if (!(name != null)) dart.assertFailed(null, I[0], 9, 53, "name != null");
+    ;
+  }).prototype = firebase_core.FirebaseApp.prototype;
+  dart.addTypeTests(firebase_core.FirebaseApp);
+  dart.addTypeCaches(firebase_core.FirebaseApp);
+  dart.setMethodSignature(firebase_core.FirebaseApp, () => ({
+    __proto__: dart.getMethods(firebase_core.FirebaseApp.__proto__),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setGetterSignature(firebase_core.FirebaseApp, () => ({
+    __proto__: dart.getGetters(firebase_core.FirebaseApp.__proto__),
+    options: dart.legacy(async.Future$(dart.legacy(firebase_core.FirebaseOptions))),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(firebase_core.FirebaseApp, I[1]);
+  dart.setFieldSignature(firebase_core.FirebaseApp, () => ({
+    __proto__: dart.getFields(firebase_core.FirebaseApp.__proto__),
+    name: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(firebase_core.FirebaseApp, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(firebase_core.FirebaseApp, ['hashCode']);
+  dart.defineLazy(firebase_core.FirebaseApp, {
+    /*firebase_core.FirebaseApp.defaultAppName*/get defaultAppName() {
+      return dart.test(io.Platform.isIOS) ? "__FIRAPP_DEFAULT" : "[DEFAULT]";
+    },
+    /*firebase_core.FirebaseApp.channel*/get channel() {
+      return C[0] || CT.C0;
+    },
+    /*firebase_core.FirebaseApp.instance*/get instance() {
+      return new firebase_core.FirebaseApp.new({name: firebase_core.FirebaseApp.defaultAppName});
+    }
+  }, true);
+  var apiKey$ = dart.privateName(firebase_core, "FirebaseOptions.apiKey");
+  var bundleID$ = dart.privateName(firebase_core, "FirebaseOptions.bundleID");
+  var clientID$ = dart.privateName(firebase_core, "FirebaseOptions.clientID");
+  var trackingID$ = dart.privateName(firebase_core, "FirebaseOptions.trackingID");
+  var gcmSenderID$ = dart.privateName(firebase_core, "FirebaseOptions.gcmSenderID");
+  var projectID$ = dart.privateName(firebase_core, "FirebaseOptions.projectID");
+  var androidClientID$ = dart.privateName(firebase_core, "FirebaseOptions.androidClientID");
+  var googleAppID$ = dart.privateName(firebase_core, "FirebaseOptions.googleAppID");
+  var databaseURL$ = dart.privateName(firebase_core, "FirebaseOptions.databaseURL");
+  var deepLinkURLScheme$ = dart.privateName(firebase_core, "FirebaseOptions.deepLinkURLScheme");
+  var storageBucket$ = dart.privateName(firebase_core, "FirebaseOptions.storageBucket");
+  firebase_core.FirebaseOptions = class FirebaseOptions extends core.Object {
+    get apiKey() {
+      return this[apiKey$];
+    }
+    set apiKey(value) {
+      super.apiKey = value;
+    }
+    get bundleID() {
+      return this[bundleID$];
+    }
+    set bundleID(value) {
+      super.bundleID = value;
+    }
+    get clientID() {
+      return this[clientID$];
+    }
+    set clientID(value) {
+      super.clientID = value;
+    }
+    get trackingID() {
+      return this[trackingID$];
+    }
+    set trackingID(value) {
+      super.trackingID = value;
+    }
+    get gcmSenderID() {
+      return this[gcmSenderID$];
+    }
+    set gcmSenderID(value) {
+      super.gcmSenderID = value;
+    }
+    get projectID() {
+      return this[projectID$];
+    }
+    set projectID(value) {
+      super.projectID = value;
+    }
+    get androidClientID() {
+      return this[androidClientID$];
+    }
+    set androidClientID(value) {
+      super.androidClientID = value;
+    }
+    get googleAppID() {
+      return this[googleAppID$];
+    }
+    set googleAppID(value) {
+      super.googleAppID = value;
+    }
+    get databaseURL() {
+      return this[databaseURL$];
+    }
+    set databaseURL(value) {
+      super.databaseURL = value;
+    }
+    get deepLinkURLScheme() {
+      return this[deepLinkURLScheme$];
+    }
+    set deepLinkURLScheme(value) {
+      super.deepLinkURLScheme = value;
+    }
+    get storageBucket() {
+      return this[storageBucket$];
+    }
+    set storageBucket(value) {
+      super.storageBucket = value;
+    }
+    get asMap() {
+      return new (T.IdentityMapOfStringL$StringL()).from(["APIKey", this.apiKey, "bundleID", this.bundleID, "clientID", this.clientID, "trackingID", this.trackingID, "GCMSenderID", this.gcmSenderID, "projectID", this.projectID, "androidClientID", this.androidClientID, "googleAppID", this.googleAppID, "databaseURL", this.databaseURL, "deepLinkURLScheme", this.deepLinkURLScheme, "storageBucket", this.storageBucket]);
+    }
+    _equals(other) {
+      if (other == null) return false;
+      if (this === other) return true;
+      if (!T.FirebaseOptionsL().is(other)) return false;
+      return dart.equals(dart.dload(other, 'apiKey'), this.apiKey) && dart.equals(dart.dload(other, 'bundleID'), this.bundleID) && dart.equals(dart.dload(other, 'clientID'), this.clientID) && dart.equals(dart.dload(other, 'trackingID'), this.trackingID) && dart.equals(dart.dload(other, 'gcmSenderID'), this.gcmSenderID) && dart.equals(dart.dload(other, 'projectID'), this.projectID) && dart.equals(dart.dload(other, 'androidClientID'), this.androidClientID) && dart.equals(dart.dload(other, 'googleAppID'), this.googleAppID) && dart.equals(dart.dload(other, 'databaseURL'), this.databaseURL) && dart.equals(dart.dload(other, 'deepLinkURLScheme'), this.deepLinkURLScheme) && dart.equals(dart.dload(other, 'storageBucket'), this.storageBucket);
+    }
+    get hashCode() {
+      return ui.hashValues(this.apiKey, this.bundleID, this.clientID, this.trackingID, this.gcmSenderID, this.projectID, this.androidClientID, this.googleAppID, this.databaseURL, this.deepLinkURLScheme, this.storageBucket);
+    }
+    toString() {
+      return dart.toString(this.asMap);
+    }
+  };
+  (firebase_core.FirebaseOptions.new = function(opts) {
+    let apiKey = opts && 'apiKey' in opts ? opts.apiKey : null;
+    let bundleID = opts && 'bundleID' in opts ? opts.bundleID : null;
+    let clientID = opts && 'clientID' in opts ? opts.clientID : null;
+    let trackingID = opts && 'trackingID' in opts ? opts.trackingID : null;
+    let gcmSenderID = opts && 'gcmSenderID' in opts ? opts.gcmSenderID : null;
+    let projectID = opts && 'projectID' in opts ? opts.projectID : null;
+    let androidClientID = opts && 'androidClientID' in opts ? opts.androidClientID : null;
+    let googleAppID = opts && 'googleAppID' in opts ? opts.googleAppID : null;
+    let databaseURL = opts && 'databaseURL' in opts ? opts.databaseURL : null;
+    let deepLinkURLScheme = opts && 'deepLinkURLScheme' in opts ? opts.deepLinkURLScheme : null;
+    let storageBucket = opts && 'storageBucket' in opts ? opts.storageBucket : null;
+    this[apiKey$] = apiKey;
+    this[bundleID$] = bundleID;
+    this[clientID$] = clientID;
+    this[trackingID$] = trackingID;
+    this[gcmSenderID$] = gcmSenderID;
+    this[projectID$] = projectID;
+    this[androidClientID$] = androidClientID;
+    this[googleAppID$] = googleAppID;
+    this[databaseURL$] = databaseURL;
+    this[deepLinkURLScheme$] = deepLinkURLScheme;
+    this[storageBucket$] = storageBucket;
+    if (!(googleAppID != null)) dart.assertFailed(null, I[2], 20, 15, "googleAppID != null");
+    ;
+  }).prototype = firebase_core.FirebaseOptions.prototype;
+  (firebase_core.FirebaseOptions.from = function(map) {
+    this[apiKey$] = T.StringL().as(map[$_get]("APIKey"));
+    this[bundleID$] = T.StringL().as(map[$_get]("bundleID"));
+    this[clientID$] = T.StringL().as(map[$_get]("clientID"));
+    this[trackingID$] = T.StringL().as(map[$_get]("trackingID"));
+    this[gcmSenderID$] = T.StringL().as(map[$_get]("GCMSenderID"));
+    this[projectID$] = T.StringL().as(map[$_get]("projectID"));
+    this[androidClientID$] = T.StringL().as(map[$_get]("androidClientID"));
+    this[googleAppID$] = T.StringL().as(map[$_get]("googleAppID"));
+    this[databaseURL$] = T.StringL().as(map[$_get]("databaseURL"));
+    this[deepLinkURLScheme$] = T.StringL().as(map[$_get]("deepLinkURLScheme"));
+    this[storageBucket$] = T.StringL().as(map[$_get]("storageBucket"));
+    if (!(this.googleAppID != null)) dart.assertFailed(null, I[2], 35, 12, "googleAppID != null");
+  }).prototype = firebase_core.FirebaseOptions.prototype;
+  dart.addTypeTests(firebase_core.FirebaseOptions);
+  dart.addTypeCaches(firebase_core.FirebaseOptions);
+  dart.setMethodSignature(firebase_core.FirebaseOptions, () => ({
+    __proto__: dart.getMethods(firebase_core.FirebaseOptions.__proto__),
+    _equals: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    [$_equals]: dart.fnType(dart.legacy(core.bool), [dart.dynamic]),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setGetterSignature(firebase_core.FirebaseOptions, () => ({
+    __proto__: dart.getGetters(firebase_core.FirebaseOptions.__proto__),
+    asMap: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String))),
+    hashCode: dart.legacy(core.int),
+    [$hashCode]: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(firebase_core.FirebaseOptions, I[1]);
+  dart.setFieldSignature(firebase_core.FirebaseOptions, () => ({
+    __proto__: dart.getFields(firebase_core.FirebaseOptions.__proto__),
+    apiKey: dart.finalFieldType(dart.legacy(core.String)),
+    bundleID: dart.finalFieldType(dart.legacy(core.String)),
+    clientID: dart.finalFieldType(dart.legacy(core.String)),
+    trackingID: dart.finalFieldType(dart.legacy(core.String)),
+    gcmSenderID: dart.finalFieldType(dart.legacy(core.String)),
+    projectID: dart.finalFieldType(dart.legacy(core.String)),
+    androidClientID: dart.finalFieldType(dart.legacy(core.String)),
+    googleAppID: dart.finalFieldType(dart.legacy(core.String)),
+    databaseURL: dart.finalFieldType(dart.legacy(core.String)),
+    deepLinkURLScheme: dart.finalFieldType(dart.legacy(core.String)),
+    storageBucket: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(firebase_core.FirebaseOptions, ['_equals', 'toString']);
+  dart.defineExtensionAccessors(firebase_core.FirebaseOptions, ['hashCode']);
+  dart.trackLibraries("packages/firebase_core/firebase_core.dart", {
+    "package:firebase_core/firebase_core.dart": firebase_core
+  }, {
+    "package:firebase_core/firebase_core.dart": ["src/firebase_app.dart", "src/firebase_options.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["src/firebase_app.dart","src/firebase_options.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/firebase_core/firebase_core.dart.lib.js"}');
+  // Exports:
+  return {
+    firebase_core: firebase_core
+  };
+}));
+
+//# sourceMappingURL=firebase_core.dart.lib.js.map

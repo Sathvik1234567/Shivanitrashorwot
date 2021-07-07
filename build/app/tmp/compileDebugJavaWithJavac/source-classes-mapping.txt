@@ -1,0 +1,4 @@
+com/example/bmibc/BuildConfig.java
+ com.example.bmibc.BuildConfig
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
